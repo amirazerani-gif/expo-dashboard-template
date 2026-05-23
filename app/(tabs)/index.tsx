@@ -3,7 +3,7 @@ import { Input, TextArea } from "@/components/ui/input";
 import { SectionCard } from "@/components/ui/section";
 import { Text } from "@/components/ui/text";
 import { useTheme } from "@/theme";
-import { Mail, Lock, Search } from "lucide-react-native";
+import { Mail, Lock, Search, ArrowRight } from "lucide-react-native";
 import React, { useState } from "react";
 import { ScrollView, Switch, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -132,17 +132,71 @@ export default function ShowcaseScreen() {
           <Button title="Outline" variant="outline" onPress={() => {}} />
           <Button title="Ghost" variant="ghost" onPress={() => {}} />
           <Button title="Gradient" variant="gradient" onPress={() => {}} />
+
+          {/* Left icon */}
           <Button
-            title="Loading…"
-            loading={loading}
-            onPress={simulateLoad}
-            loadingTitle="Please wait…"
+            title="Send Email"
+            onPress={() => {}}
+            leftIcon={<Mail size={18} color={theme.textInverse} />}
           />
+
+          {/* Right icon */}
+          <Button
+            title="Continue"
+            variant="outline"
+            onPress={() => {}}
+            rightIcon={<ArrowRight size={18} color={theme.primary} />}
+          />
+
+          {/* Both icons */}
+          <Button
+            title="Search"
+            variant="gradient"
+            onPress={() => {}}
+            leftIcon={<Search size={18} color={theme.textInverse} />}
+            rightIcon={<ArrowRight size={18} color={theme.textInverse} />}
+          />
+
+          {/* Loading — tap to trigger */}
+          <Button
+            title="Tap to Load"
+            loading={loading}
+            loadingTitle="Please wait…"
+            onPress={simulateLoad}
+            leftIcon={<Mail size={18} color={theme.textInverse} />}
+          />
+
           <Button title="Disabled" disabled onPress={() => {}} />
+          <Button
+            title="Disabled with icon"
+            disabled
+            onPress={() => {}}
+            leftIcon={<Lock size={18} color={theme.textInverse} />}
+          />
+
+          {/* Size row */}
           <View style={{ flexDirection: "row", gap: spacing.sm }}>
-            <Button title="SM" size="sm" fullWidth={false} onPress={() => {}} />
-            <Button title="MD" size="md" fullWidth={false} onPress={() => {}} />
-            <Button title="LG" size="lg" fullWidth={false} onPress={() => {}} />
+            <Button
+              title="SM"
+              size="sm"
+              fullWidth={false}
+              onPress={() => {}}
+              leftIcon={<Search size={14} color={theme.textInverse} />}
+            />
+            <Button
+              title="MD"
+              size="md"
+              fullWidth={false}
+              onPress={() => {}}
+              leftIcon={<Search size={16} color={theme.textInverse} />}
+            />
+            <Button
+              title="LG"
+              size="lg"
+              fullWidth={false}
+              onPress={() => {}}
+              leftIcon={<Search size={18} color={theme.textInverse} />}
+            />
           </View>
         </SectionCard>
       </View>
