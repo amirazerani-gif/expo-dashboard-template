@@ -35,6 +35,7 @@ interface ButtonProps {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   style?: ViewStyle;
+  labelColor?: string;
   /** Only used when variant="gradient" */
   gradientColors?: [string, string, ...string[]];
 }
@@ -60,6 +61,7 @@ export function Button({
   rightIcon,
   style,
   gradientColors,
+  labelColor,
 }: ButtonProps) {
   const { theme } = useTheme();
   const isDisabled = disabled || loading;
@@ -94,10 +96,6 @@ export function Button({
   };
 
   const label = loading && loadingTitle ? loadingTitle : title;
-  const labelColor =
-    variant === "solid" || variant === "gradient"
-      ? theme.textInverse
-      : theme.primary;
 
   const content = (
     <View style={innerRow} pointerEvents="none">

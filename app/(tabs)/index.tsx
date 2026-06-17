@@ -3,11 +3,11 @@ import { Input, TextArea } from "@/components/ui/input";
 import { SectionCard } from "@/components/ui/section";
 import { Text } from "@/components/ui/text";
 import { useTheme } from "@/theme";
-import { Mail, Lock, Search, ArrowRight } from "lucide-react-native";
 import React, { useState } from "react";
 import { ScrollView, Switch, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scale, verticalScale } from "react-native-size-matters";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function ShowcaseScreen() {
   const { theme, isDark, radius, spacing } = useTheme();
@@ -137,7 +137,13 @@ export default function ShowcaseScreen() {
           <Button
             title="Send Email"
             onPress={() => {}}
-            leftIcon={<Mail size={18} color={theme.textInverse} />}
+            leftIcon={
+              <Ionicons
+                name="mail-outline"
+                size={18}
+                color={theme.textInverse}
+              />
+            }
           />
 
           {/* Right icon */}
@@ -145,7 +151,13 @@ export default function ShowcaseScreen() {
             title="Continue"
             variant="outline"
             onPress={() => {}}
-            rightIcon={<ArrowRight size={18} color={theme.primary} />}
+            rightIcon={
+              <Ionicons
+                name="arrow-forward"
+                size={18}
+                color={theme.textInverse}
+              />
+            }
           />
 
           {/* Both icons */}
@@ -153,8 +165,16 @@ export default function ShowcaseScreen() {
             title="Search"
             variant="gradient"
             onPress={() => {}}
-            leftIcon={<Search size={18} color={theme.textInverse} />}
-            rightIcon={<ArrowRight size={18} color={theme.textInverse} />}
+            leftIcon={
+              <Ionicons name="search" size={18} color={theme.textInverse} />
+            }
+            rightIcon={
+              <Ionicons
+                name="arrow-forward"
+                size={18}
+                color={theme.textInverse}
+              />
+            }
           />
 
           {/* Loading — tap to trigger */}
@@ -163,7 +183,13 @@ export default function ShowcaseScreen() {
             loading={loading}
             loadingTitle="Please wait…"
             onPress={simulateLoad}
-            leftIcon={<Mail size={18} color={theme.textInverse} />}
+            leftIcon={
+              <Ionicons
+                name="mail-outline"
+                size={18}
+                color={theme.textInverse}
+              />
+            }
           />
 
           <Button title="Disabled" disabled onPress={() => {}} />
@@ -171,7 +197,13 @@ export default function ShowcaseScreen() {
             title="Disabled with icon"
             disabled
             onPress={() => {}}
-            leftIcon={<Lock size={18} color={theme.textInverse} />}
+            leftIcon={
+              <Ionicons
+                name="lock-closed-outline"
+                size={18}
+                color={theme.textInverse}
+              />
+            }
           />
 
           {/* Size row */}
@@ -181,21 +213,27 @@ export default function ShowcaseScreen() {
               size="sm"
               fullWidth={false}
               onPress={() => {}}
-              leftIcon={<Search size={14} color={theme.textInverse} />}
+              leftIcon={
+                <Ionicons name="search" size={18} color={theme.textInverse} />
+              }
             />
             <Button
               title="MD"
               size="md"
               fullWidth={false}
               onPress={() => {}}
-              leftIcon={<Search size={16} color={theme.textInverse} />}
+              leftIcon={
+                <Ionicons name="search" size={18} color={theme.textInverse} />
+              }
             />
             <Button
               title="LG"
               size="lg"
               fullWidth={false}
               onPress={() => {}}
-              leftIcon={<Search size={18} color={theme.textInverse} />}
+              leftIcon={
+                <Ionicons name="search" size={18} color={theme.textInverse} />
+              }
             />
           </View>
         </SectionCard>
@@ -217,7 +255,7 @@ export default function ShowcaseScreen() {
           <Input
             label="Email"
             placeholder="name@example.com"
-            icon={Mail}
+            iconName={"mail-outline"}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -226,7 +264,7 @@ export default function ShowcaseScreen() {
           <Input
             label="Password"
             placeholder="Your password"
-            icon={Lock}
+            iconName={"lock-closed-outline"}
             showPasswordToggle
             secureTextEntry
             value={password}
@@ -235,7 +273,7 @@ export default function ShowcaseScreen() {
           <Input
             label="Search"
             placeholder="Search anything…"
-            icon={Search}
+            iconName={"search"}
             value=""
             onChangeText={() => {}}
           />

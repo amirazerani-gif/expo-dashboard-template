@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { router, usePathname } from "expo-router";
-import { Grid2x2 } from "lucide-react-native";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useCallback, useRef, useState, ComponentProps } from "react";
 import { Animated, Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -211,7 +211,7 @@ export function AppTabBar({
             <Animated.View style={{ transform: [{ scale: catBounce }] }}>
               <Pressable onPress={handleCentrePress} style={s.centreBtn}>
                 <Animated.View style={{ transform: [{ rotate: iconRotate }] }}>
-                  <Grid2x2 color="white" size={18} strokeWidth={2.5} />
+                  <Ionicons name ="grid-outline" color="white" size={18} strokeWidth={2.5} />
                 </Animated.View>
               </Pressable>
             </Animated.View>

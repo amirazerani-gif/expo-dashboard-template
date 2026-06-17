@@ -8,6 +8,8 @@ import { useColorScheme } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import NetInfo from "@react-native-community/netinfo";
+import { Toaster } from "sonner-native";
+import { ErrorToastListener } from "@/hooks/core/useErrorListener";
 
 if (!__DEV__) {
   console.log = () => {};
@@ -101,6 +103,8 @@ function RootLayoutNav() {
             />
             <Stack.Screen name="modal" options={{ presentation: "modal" }} />
           </Stack>
+          <ErrorToastListener />
+          <Toaster position="top-center" richColors />
         </ThemeProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

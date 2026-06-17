@@ -1,18 +1,5 @@
-/**
- * components/ui/Input.tsx
- * ─────────────────────────────────────────────────────────────
- * Input   — single line
- * TextArea — multiline (same API)
- *
- * Props:
- *   label, error, icon (lucide), rightElement,
- *   showPasswordToggle — show the eye/eye-off button (opt-in)
- *   disabled, containerStyle
- * ─────────────────────────────────────────────────────────────
- */
-
 import { useTheme } from "@/theme";
-import { Eye, EyeOff, LucideIcon } from "lucide-react-native";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -28,10 +15,8 @@ import { Text } from "./text";
 interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
-  /** Lucide icon component e.g. icon={Mail} */
-  icon?: LucideIcon;
+  iconName?: string;
   rightElement?: React.ReactNode;
-  /** Renders the eye / eye-off toggle — use with secureTextEntry */
   showPasswordToggle?: boolean;
   disabled?: boolean;
   containerStyle?: ViewStyle;
@@ -40,7 +25,7 @@ interface InputProps extends TextInputProps {
 export function Input({
   label,
   error,
-  icon: Icon,
+  iconName,
   rightElement,
   showPasswordToggle = false,
   disabled = false,
@@ -87,8 +72,9 @@ export function Input({
           },
         ]}
       >
-        {Icon && (
-          <Icon
+        {iconName && (
+          <Ionicons
+            name={iconName as any}
             size={moderateScale(18)}
             color={theme.textTertiary}
             style={{ marginRight: scale(8) }}
@@ -124,11 +110,11 @@ export function Input({
 
         {showPasswordToggle && (
           <Pressable onPress={() => setHidePassword((p) => !p)} hitSlop={8}>
-            {hidePassword ? (
-              <EyeOff size={moderateScale(18)} color={theme.textTertiary} />
-            ) : (
-              <Eye size={moderateScale(18)} color={theme.textTertiary} />
-            )}
+            <Ionicons
+              name={hidePassword ? "eye-off-outline" : "eye-outline"}
+              size={moderateScale(18)}
+              color={theme.textTertiary}
+            />
           </Pressable>
         )}
 
@@ -144,8 +130,6 @@ export function Input({
   );
 }
 
-// ─── TextArea ─────────────────────────────────────────────────────────────────
-
 interface TextAreaProps extends Omit<InputProps, "showPasswordToggle"> {
   numberOfLines?: number;
 }
@@ -156,7 +140,7 @@ export function TextArea({
   style,
   label,
   error,
-  icon: Icon,
+  iconName,
   disabled = false,
   ...props
 }: TextAreaProps) {
@@ -197,8 +181,9 @@ export function TextArea({
           },
         ]}
       >
-        {Icon && (
-          <Icon
+        {iconName && (
+          <Ionicons
+            name={iconName as any}
             size={moderateScale(18)}
             color={theme.textTertiary}
             style={{ marginRight: scale(8), marginTop: 2 }}
@@ -242,12 +227,6 @@ export function TextArea({
 }
 
 const s = StyleSheet.create({
-  field: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-  },
-  input: {
-    flex: 1,
-  },
+  field: { flexDirection: "row", alignItems: "center", borderWidth: 1 },
+  input: { flex: 1 },
 });
