@@ -4,6 +4,7 @@ A production-ready Expo starter for role-based apps with a public interface and 
 
 Built on the Expo tabs template, extended with an auth-gated dashboard group that supports unlimited roles and redirect-based route protection out of the box.
 
+> Built on **Expo SDK 56** with **New Architecture** enabled.
 ---
 
 ## What's Included
